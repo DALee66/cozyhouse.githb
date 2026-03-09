@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мастер на час Екатеринбург | Уютный дом — Бытовой ремонт с гарантией</title>
+  <meta name="description" content="Сантехник, электрик, сборка мебели и мелкий ремонт в Екатеринбурге. Выезд за 30 минут, фиксированная цена, гарантия 12 месяцев.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Мастер на час Екатеринбург | Уютный дом">
+  <meta property="og:description" content="Профессиональный ремонт «под ключ». Гарантия 12 месяцев, оплата после — только когда вы довольны.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://uyutnyy-dom.ru/">
+  <meta property="og:image" content="https://uyutnyy-dom.ru/assets/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Мастер на час Екатеринбург | Уютный дом">
+  <meta name="twitter:description" content="Фиксированная цена, выезд за 30 мин, мастера с опытом 5+ лет. Гарантия 12 месяцев.">
+
+  <style>
+    /* === Global Reset & Base === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+    }
+
+    :root {
+      --primary: #007bff;
+      --primary-dark: #0056b3;
+      --text: #333;
+      --text-light: #666;
+      --bg: #f9f9f9;
+      --card: #fff;
+      --border: #e0e0e0;
+      --error: #e74c3c;
+      --orange: #f37021;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* === Skip Link === */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      z-index: 1000;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* === Header === */
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+    }
+    .nav-links a {
+      color: var(--text);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    .nav-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 0.375rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-phone {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+    }
+    .btn-primary:hover { background: var(--primary-dark); }
+
+    /* === Hero === */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/hero.jpg') no-repeat center/cover;
+      color: white;
+      text-align: center;
+      padding: 5rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.875rem;
+    }
+    .hero-badges span {
+      background: rgba(255,255,255,0.2);
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.3rem;
+    }
+
+    /* === Services === */
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      line-height: 1.5;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 3rem;
+    }
+
+    .service-card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #e6f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      text-align: center;
+      color: #222;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 1.2rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--orange);
+      display: block;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* === Why Choose Us === */
+    .features-list {
+      list-style: none;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .features-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed #eee;
+      font-size: 1.05rem;
+    }
+    .features-list li:last-child { border-bottom: none; }
+
+    /* === CTA Form — Phone Frame Style === */
+    .cta-form {
+      background: var(--bg);
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .form-card {
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 2.5rem;
+    }
+
+    .form-card h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .helper-text {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 0.4rem;
+      display: block;
+    }
+
+    .error-message {
+      color: var(--error);
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+      display: none;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    .btn-submit:hover { background: var(--primary-dark); }
+
+    .consent {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.5;
+      text-align: left;
+    }
+    .consent a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    /* === Footer === */
+    footer {
+      background: #1a1a1a;
+      color: #ddd;
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: #fff;
+    }
+    .footer-logo p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+    }
+
+    .footer-contact a {
+      display: block;
+      margin: 0.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    .footer-nav h3 {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .footer-nav ul {
+      list-style: none;
+    }
+    .footer-nav li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-nav a {
+      color: #bbb;
+      transition: color 0.3s;
+    }
+    .footer-nav a:hover { color: #fff; }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #333;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    .footer-bottom a {
+      color: #aaa;
+      margin: 0 0.5rem;
+    }
+
+    /* === Responsive === */
+    @media (max-width: 768px) {
+      .header-inner,
+      .hero-btns,
+      .hero-badges {
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-actions {
+        justify-content: center;
+      }
+      .hero {
+        padding: 3rem 1rem;
+      }
+      .hero h1 { font-size: 2rem; }
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Перейти к основному контенту</a>
+
+<header>
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="logo">Уютный дом</a>
+      <nav class="nav-links">
+        <a href="#services">Услуги</a>
+        <a href="#about">О нас</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="tel:+73430000000" class="btn btn-phone">+7 (343) 000-00-00</a>
+        <a href="#contact" class="btn btn-primary">Вызвать мастера</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Мастер на час в Екатеринбурге<br><small>с гарантией 12 месяцев</small></h1>
+      <p>
+        Сантехник, электрик, сборка мебели, мелкий ремонт — решим любую задачу за 1 час.<br>
+        Фиксированные цены, выезд за 30 минут, мастера с опытом 5+ лет.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary">📞 Вызвать мастера</a>
+        <a href="#services" class="btn btn-outline">Смотреть услуги</a>
+      </div>
+      <div class="hero-badges">
+        <span>Гарантия 12 месяцев</span>
+        <span>Выезд за 30 минут</span>
+        <span>Фиксированная цена</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2 class="section-title">Популярные услуги</h2>
+      <p class="section-subtitle">
+        Все работы выполняются с использованием профессионального инструмента и оригинальных запчастей.  
+        Цена фиксируется до начала работ — никаких сюрпризов.
+      </p>
+
+      <div class="services-grid">
+        <!-- Карточка 1 -->
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H6"></path>
+            </svg>
+          </div>
+          <h3>Сантехнические работы</h3>
+          <p>Устранение засоров, замена смесителей, установка унитазов, подключение стиральных машин и водонагревателей.</p>
+          <strong class="price">от 890 ₽</strong>
+        </article>
+
+        <!-- Карточка 2 -->
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 10V3L4 14h7v7l9-11h-z"></path>
+            </svg>
+          </div>
+          <h3>Электромонтаж</h3>
+          <p>Замена розеток и выключателей, установка люстр, диагностика проводки, сборка электрощитков.</p>
+          <strong class="price">от 750 ₽</strong>
+        </article>
+
+        <!-- Карточка 3 -->
+        <article class="service-card">
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.5 2H19a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-4.5"></path>
+              <path d="M9.5 2H5a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h4.5"></path>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7"></path>
+              <line x1="10" y1="20" x2="14" y2="20"></line>
+              <line x1="12" y1="16" x2="12" y2="20"></line>
+            </svg>
+          </div>
+          <h3>Сборка мебели</h3>
+          <p>Сборка шкафов, кухонь, кроватей, установка техники, навеска полок, карнизов, зеркал.</p>
+          <strong class="price">от 650 ₽</strong>
+        </article>
+      </div>
+
+      <div class="text-center">
+        <a href="#contact" class="btn btn-outline-primary">
+          Все услуги и цены →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="about" class="why-us">
+    <div class="container">
+      <h2 class="section-title">Почему 2 300+ клиентов выбрали Уютный дом</h2>
+      <ul class="features-list">
+        <li><strong>Гарантия 12 месяцев</strong> на все виды работ по договору</li>
+        <li><strong>Фиксированная цена</strong> — никаких доплат после начала работ</li>
+        <li><strong>Мастера с опытом 5+ лет</strong> — проверка службы безопасности</li>
+        <li><strong>Оплата после</strong> — только когда вы довольны результатом</li>
+      </ul>
+      <div class="text-center">
+        <a href="#contact" class="btn btn-primary">Рассчитать стоимость</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ВТОРОЙ БЛОК "Оставить заявку" -->
+  <section class="cta-form">
+    <div class="container">
+      <div class="form-card">
+        <h2>Оставьте заявку — перезвоним за 5 минут</h2>
+
+        <div class="form-group">
+          <label for="name2">Ваше имя *</label>
+          <input type="text" id="name2" name="name2" placeholder="Иван Иванов">
+          <span class="helper-text">Пожалуйста, введите имя (2–50 символов)</span>
+          <span class="error-message">Пожалуйста, введите имя (2–50 символов)</span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone2">Телефон *</label>
+          <input type="tel" id="phone2" name="phone2" placeholder="+7 (___) ___-__-__" value="+7 (999) 123-45-67">
+          <span class="helper-text">Введите корректный номер телефона<br>Например: +7 (999) 123-45-67</span>
+          <span class="error-message">Введите корректный номер телефона</span>
+        </div>
+
+        <div class="form-group">
+          <label for="service2">Какая услуга нужна?</label>
+          <select id="service2" name="service2">
+            <option value="">Выберите услугу</option>
+            <option value="plumbing">Сантехнические работы</option>
+            <option value="electric">Электромонтаж</option>
+            <option value="furniture">Сборка мебели</option>
+            <option value="repair">Мелкий ремонт</option>
+            <option value="other">Другое</option>
+          </select>
+          <span class="helper-text">Выберите, чтобы мы подготовили мастера с нужным инструментом</span>
+        </div>
+
+        <div class="form-group">
+          <label for="details2">Детали задачи</label>
+          <textarea id="details2" name="details2" placeholder="Опишите, что нужно сделать..."></textarea>
+          <span class="helper-text">Чем подробнее — тем точнее назовём цену и время</span>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="submitForm()">
+          📩 Отправить заявку
+        </button>
+
+        <div class="consent">
+          Нажимая «Отправить», вы соглашаетесь с <a href="/privacy">политикой конфиденциальности</a>.<br>
+          Мы не передаём данные третьим лицам. Обработка персональных данных осуществляется в соответствии с 152-ФЗ.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Form -->
+  <section id="contact" class="cta-form">
+    <div class="container">
+      <div class="form-card">
+        <h2>Оставьте заявку — перезвоним за 5 минут</h2>
+
+        <div class="form-group">
+          <label for="name">Ваше имя *</label>
+          <input type="text" id="name" name="name" placeholder="Иван Иванов">
+          <span class="helper-text">Пожалуйста, введите имя (2–50 символов)</span>
+          <span class="error-message">Пожалуйста, введите имя (2–50 символов)</span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Телефон *</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" value="+7 (999) 123-45-67">
+          <span class="helper-text">Введите корректный номер телефона<br>Например: +7 (999) 123-45-67</span>
+          <span class="error-message">Введите корректный номер телефона</span>
+        </div>
+
+        <div class="form-group">
+          <label for="service">Какая услуга нужна?</label>
+          <select id="service" name="service">
+            <option value="">Выберите услугу</option>
+            <option value="plumbing">Сантехнические работы</option>
+            <option value="electric">Электромонтаж</option>
+            <option value="furniture">Сборка мебели</option>
+            <option value="repair">Мелкий ремонт</option>
+            <option value="other">Другое</option>
+          </select>
+          <span class="helper-text">Выберите, чтобы мы подготовили мастера с нужным инструментом</span>
+        </div>
+
+        <div class="form-group">
+          <label for="details">Детали задачи</label>
+          <textarea id="details" name="details" placeholder="Опишите, что нужно сделать..."></textarea>
+          <span class="helper-text">Чем подробнее — тем точнее назовём цену и время</span>
+        </div>
+
+        <button type="button" class="btn-submit" onclick="submitForm()">
+          📩 Отправить заявку
+        </button>
+
+        <div class="consent">
+          Нажимая «Отправить», вы соглашаетесь с <a href="/privacy">политикой конфиденциальности</a>.<br>
+          Мы не передаём данные третьим лицам. Обработка персональных данных осуществляется в соответствии с 152-ФЗ.
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <h2>Уютный дом</h2>
+        <p>Сервис бытовых услуг в Екатеринбурге.<br>Работаем ежедневно с 8:00 до 22:00 без выходных.</p>
+      </div>
+      <div class="footer-contact">
+        <a href="tel:+73430000000">+7 (343) 000-00-00</a>
+        <a href="mailto:dim_li@mail.ru">dim_li@mail.ru</a>
+        <address>г. Екатеринбург</address>
+      </div>
+      <nav class="footer-nav">
+        <h3>Услуги</h3>
+        <ul>
+          <li><a href="#services">Сантехник</a></li>
+          <li><a href="#services">Электрик</a></li>
+          <li><a href="#services">Сборка мебели</a></li>
+          <li><a href="#services">Мелкий ремонт</a></li>
+          <li><a href="#services">Все услуги и цены</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-nav">
+        <h3>Компания</h3>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#reviews">Отзывы клиентов</a></li>
+          <li><a href="/prices">Прайс-лист</a></li>
+          <li><a href="/guarantee">Гарантия</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      © 2024–2026 Уютный дом. Все права защищены.<br>
+      <a href="/privacy">Политика конфиденциальности</a> | <a href="/terms">Договор оферты</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    const nameErr = document.querySelector('.form-group:nth-child(1) .error-message');
+    const phoneErr = document.querySelector('.form-group:nth-child(2) .error-message');
+
+    // Сброс ошибок
+    nameErr.style.display = 'none';
+    phoneErr.style.display = 'none';
+
+    let valid = true;
+
+    if (!name || name.length < 2 || name.length > 50) {
+      nameErr.style.display = 'block';
+      valid = false;
+    }
+
+    // Валидация телефона: +7 (XXX) XXX-XX-XX
+    const phoneRegex = /^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/;
+    if (!phoneRegex.test(phone)) {
+      phoneErr.style.display = 'block';
+      valid = false;
+    }
+
+    if (valid) {
+      alert('Заявка отправлена! С вами свяжутся в течение 5 минут.');
+      // Здесь можно добавить AJAX-отправку
+    }
+  }
+</script>
+
+</body>
+</html>
