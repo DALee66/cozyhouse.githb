@@ -37,6 +37,7 @@
       --border: #e0e0e0;
       --error: #e74c3c;
       --orange: #f37021;
+      --gray-badge: #eaecef;
     }
 
     body {
@@ -71,17 +72,17 @@
     /* === Header === */
     header {
       background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-bottom: 1px solid #eee;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
     .header-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 0;
+      padding: 0.75rem 0;
     }
 
     .logo {
@@ -130,28 +131,76 @@
     .btn-primary:hover { background: var(--primary-dark); }
 
     /* === Hero === */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/assets/hero.jpg') no-repeat center/cover;
-      color: white;
+    .hero-section {
+      background: linear-gradient(135deg, #dfe3ea 0%, #cfd6e0 100%);
+      padding: 4rem 0;
       text-align: center;
-      padding: 5rem 1rem;
     }
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    .hero-title {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
     }
-    .hero p {
+
+    .hero-subtitle {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-desc {
       font-size: 1.1rem;
+      color: #555;
       max-width: 700px;
       margin: 0 auto 2rem;
+      line-height: 1.6;
     }
 
-    .hero-btns {
+    .hero-actions {
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.8rem 1.6rem;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+      border-radius: 8px;
+      padding: 0.8rem 1.6rem;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
     }
 
     .hero-badges {
@@ -159,12 +208,16 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 1rem;
-      font-size: 0.875rem;
+      margin-top: 1rem;
     }
-    .hero-badges span {
-      background: rgba(255,255,255,0.2);
-      padding: 0.4rem 0.8rem;
-      border-radius: 0.3rem;
+
+    .badge {
+      background: var(--gray-badge);
+      color: #333;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
     }
 
     /* === Services === */
@@ -340,7 +393,6 @@
       cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
       margin-top: 1rem;
     }
@@ -393,12 +445,8 @@
       margin-bottom: 1rem;
       color: #fff;
     }
-    .footer-nav ul {
-      list-style: none;
-    }
-    .footer-nav li {
-      margin-bottom: 0.6rem;
-    }
+    .footer-nav ul { list-style: none; }
+    .footer-nav li { margin-bottom: 0.6rem; }
     .footer-nav a {
       color: #bbb;
       transition: color 0.3s;
@@ -417,21 +465,151 @@
       margin: 0 0.5rem;
     }
 
+    /* === Отзывы клиентов === */
+    .reviews-section {
+      background: var(--bg);
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .review-card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      background: #e6f0ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    .review-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-date {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .review-text {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* === Акции === */
+    .promotions-section {
+      background: linear-gradient(135deg, #ffe6cc 0%, #ffddb3 100%);
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .promotions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .promotion-card {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .promotion-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .promotion-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .promotion-desc {
+      font-size: 1rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* === Галерея === */
+    .gallery-section {
+      padding: 4rem 0;
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
     /* === Responsive === */
     @media (max-width: 768px) {
-      .header-inner,
-      .hero-btns,
+      .header-inner {
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
       .hero-badges {
         flex-direction: column;
         align-items: center;
       }
-      .nav-actions {
-        justify-content: center;
-      }
-      .hero {
-        padding: 3rem 1rem;
-      }
-      .hero h1 { font-size: 2rem; }
       .services-grid {
         grid-template-columns: 1fr;
       }
@@ -442,6 +620,7 @@
 
 <a href="#main" class="skip-link">Перейти к основному контенту</a>
 
+<!-- === Header === -->
 <header>
   <div class="container">
     <div class="header-inner">
@@ -462,27 +641,30 @@
 
 <main id="main">
 
-  <!-- Hero -->
-  <section class="hero">
+  <!-- === Hero === -->
+  <section class="hero-section">
     <div class="container">
-      <h1>Мастер на час в Екатеринбурге<br><small>с гарантией 12 месяцев</small></h1>
-      <p>
+      <h1 class="hero-title">Мастер на час в Екатеринбурге</h1>
+      <p class="hero-subtitle">с гарантией 12 месяцев</p>
+      <p class="hero-desc">
         Сантехник, электрик, сборка мебели, мелкий ремонт — решим любую задачу за 1 час.<br>
         Фиксированные цены, выезд за 30 минут, мастера с опытом 5+ лет.
       </p>
-      <div class="hero-btns">
-        <a href="#contact" class="btn btn-primary">📞 Вызвать мастера</a>
-        <a href="#services" class="btn btn-outline">Смотреть услуги</a>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">📞 Вызвать мастера</a>
+        <a href="#services" class="btn-outline">Смотреть услуги</a>
       </div>
+
       <div class="hero-badges">
-        <span>Гарантия 12 месяцев</span>
-        <span>Выезд за 30 минут</span>
-        <span>Фиксированная цена</span>
+        <span class="badge">Гарантия 12 месяцев</span>
+        <span class="badge">Выезд за 30 минут</span>
+        <span class="badge">Фиксированная цена</span>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- === Популярные услуги === -->
   <section id="services" class="services">
     <div class="container">
       <h2 class="section-title">Популярные услуги</h2>
@@ -492,7 +674,6 @@
       </p>
 
       <div class="services-grid">
-        <!-- Карточка 1 -->
         <article class="service-card">
           <div class="service-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -504,7 +685,6 @@
           <strong class="price">от 890 ₽</strong>
         </article>
 
-        <!-- Карточка 2 -->
         <article class="service-card">
           <div class="service-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -516,7 +696,6 @@
           <strong class="price">от 750 ₽</strong>
         </article>
 
-        <!-- Карточка 3 -->
         <article class="service-card">
           <div class="service-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -534,14 +713,12 @@
       </div>
 
       <div class="text-center">
-        <a href="#contact" class="btn btn-outline-primary">
-          Все услуги и цены →
-        </a>
+        <a href="#contact" class="btn-outline">Все услуги и цены →</a>
       </div>
     </div>
   </section>
 
-  <!-- Why Choose Us -->
+  <!-- === Почему выбрали нас === -->
   <section id="about" class="why-us">
     <div class="container">
       <h2 class="section-title">Почему 2 300+ клиентов выбрали Уютный дом</h2>
@@ -551,13 +728,107 @@
         <li><strong>Мастера с опытом 5+ лет</strong> — проверка службы безопасности</li>
         <li><strong>Оплата после</strong> — только когда вы довольны результатом</li>
       </ul>
-      <div class="text-center">
-        <a href="#contact" class="btn btn-primary">Рассчитать стоимость</a>
+    </div>
+  </section>
+
+  <!-- === Отзывы клиентов === -->
+  <section id="reviews" class="reviews-section">
+    <div class="container">
+      <h2 class="section-title">Отзывы клиентов</h2>
+      <p class="section-subtitle">
+        Реальные истории наших клиентов. Мы гордимся каждым отзывом!
+      </p>
+
+      <div class="reviews-grid">
+        <article class="review-card">
+          <div class="review-avatar">😊</div>
+          <h3 class="review-name">Иван Иванов</h3>
+          <p class="review-date">12 марта 2026</p>
+          <p class="review-text">
+            Мастер приехал вовремя, всё сделал аккуратно. Рекомендую!
+          </p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-avatar">👩‍💻</div>
+          <h3 class="review-name">Мария Петрова</h3>
+          <p class="review-date">10 марта 2026</p>
+          <p class="review-text">
+            Спасибо за быструю помощь! Проблема была решена за 30 минут.
+          </p>
+        </article>
+
+        <article class="review-card">
+          <div class="review-avatar">👨‍🔧</div>
+          <h3 class="review-name">Алексей Сидоров</h3>
+          <p class="review-date">8 марта 2026</p>
+          <p class="review-text">
+            Профессиональный подход и качественные материалы. Очень доволен!
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- CTA Form -->
+  <!-- === Акции и специальные предложения === -->
+  <section id="promotions" class="promotions-section">
+    <div class="container">
+      <h2 class="section-title">Акции и специальные предложения</h2>
+      <p class="section-subtitle">
+        Успейте воспользоваться выгодными предложениями прямо сейчас!
+      </p>
+
+      <div class="promotions-grid">
+        <article class="promotion-card">
+          <h3 class="promotion-title">Скидка 10% на первую заявку</h3>
+          <p class="promotion-desc">
+            Получите скидку 10% на первый заказ. Просто оставьте заявку на сайте.
+          </p>
+        </article>
+
+        <article class="promotion-card">
+          <h3 class="promotion-title">Бесплатный выезд мастера</h3>
+          <p class="promotion-desc">
+            При заказе от 2000 ₽ выезд мастера бесплатно.
+          </p>
+        </article>
+
+        <article class="promotion-card">
+          <h3 class="promotion-title">Приведи друга — получи скидку</h3>
+          <p class="promotion-desc">
+            Приведите друга и получите дополнительную скидку 5% на следующий заказ.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- === Галерея выполненных работ === -->
+  <section id="gallery" class="gallery-section">
+    <div class="container">
+      <h2 class="section-title">Галерея выполненных работ</h2>
+      <p class="section-subtitle">
+        Примеры наших работ. Качество, которое говорит само за себя.
+      </p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x200?text=До+ремонта" alt="До ремонта">
+        </div>
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x200?text=После+ремонта" alt="После ремонта">
+        </div>
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x200?text=Смеситель" alt="Установка смесителя">
+        </div>
+        <div class="gallery-item">
+          <img src="https://via.placeholder.com/300x200?text=Мебель" alt="Сборка мебели">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- === Оставить заявку === -->
   <section id="contact" class="cta-form">
     <div class="container">
       <div class="form-card">
@@ -664,24 +935,4 @@
 
     let valid = true;
 
-    if (!name || name.length < 2 || name.length > 50) {
-      nameErr.style.display = 'block';
-      valid = false;
-    }
-
-    // Валидация телефона: +7 (XXX) XXX-XX-XX
-    const phoneRegex = /^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/;
-    if (!phoneRegex.test(phone)) {
-      phoneErr.style.display = 'block';
-      valid = false;
-    }
-
-    if (valid) {
-      alert('Заявка отправлена! С вами свяжутся в течение 5 минут.');
-      // Здесь можно добавить AJAX-отправку
-    }
-  }
-</script>
-
-</body>
-</html>
+    if (!name || name.length < 2 || name.length > 
