@@ -1,938 +1,2040 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мастер на час Екатеринбург | Уютный дом — Бытовой ремонт с гарантией</title>
-  <meta name="description" content="Сантехник, электрик, сборка мебели и мелкий ремонт в Екатеринбурге. Выезд за 30 минут, фиксированная цена, гарантия 12 месяцев.">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Мастер на час Екатеринбург | Уютный дом">
-  <meta property="og:description" content="Профессиональный ремонт «под ключ». Гарантия 12 месяцев, оплата после — только когда вы довольны.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://uyutnyy-dom.ru/">
-  <meta property="og:image" content="https://uyutnyy-dom.ru/assets/og-image.jpg">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Мастер на час Екатеринбург | Уютный дом">
-  <meta name="twitter:description" content="Фиксированная цена, выезд за 30 мин, мастера с опытом 5+ лет. Гарантия 12 месяцев.">
-
-  <style>
-    /* === Global Reset & Base === */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-    }
-
-    :root {
-      --primary: #007bff;
-      --primary-dark: #0056b3;
-      --text: #333;
-      --text-light: #666;
-      --bg: #f9f9f9;
-      --card: #fff;
-      --border: #e0e0e0;
-      --error: #e74c3c;
-      --orange: #f37021;
-      --gray-badge: #eaecef;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* === Skip Link === */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: #000;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      z-index: 1000;
-    }
-    .skip-link:focus { top: 0; }
-
-    /* === Header === */
-    header {
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 0;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.2rem;
-    }
-    .nav-links a {
-      color: var(--text);
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    .nav-links a:hover { color: var(--primary); }
-
-    .nav-actions {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
-    .btn {
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.375rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .btn-phone {
-      background: transparent;
-      color: var(--primary);
-      border: 1px solid var(--primary);
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      border: none;
-    }
-    .btn-primary:hover { background: var(--primary-dark); }
-
-    /* === Hero === */
-    .hero-section {
-      background: linear-gradient(135deg, #dfe3ea 0%, #cfd6e0 100%);
-      padding: 4rem 0;
-      text-align: center;
-    }
-
-    .hero-title {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: #222;
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-    }
-
-    .hero-subtitle {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #444;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-desc {
-      font-size: 1.1rem;
-      color: #555;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      line-height: 1.6;
-    }
-
-    .hero-actions {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 0.8rem 1.6rem;
-      font-weight: 600;
-      font-size: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .btn-primary:hover {
-      background: var(--primary-dark);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--primary);
-      border: 2px solid var(--primary);
-      border-radius: 8px;
-      padding: 0.8rem 1.6rem;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: all 0.3s;
-    }
-
-    .btn-outline:hover {
-      background: var(--primary);
-      color: white;
-    }
-
-    .hero-badges {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .badge {
-      background: var(--gray-badge);
-      color: #333;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    /* === Services === */
-    .section-title {
-      text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: #222;
-    }
-    .section-subtitle {
-      text-align: center;
-      color: var(--text-light);
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      line-height: 1.5;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.8rem;
-      margin-bottom: 3rem;
-    }
-
-    .service-card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 1.8rem 1.5rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .service-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #e6f0ff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.2rem;
-      color: var(--primary);
-      font-size: 1.4rem;
-    }
-    .service-icon svg {
-      width: 24px;
-      height: 24px;
-      fill: none;
-    }
-
-    .service-card h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-      text-align: center;
-      color: #222;
-    }
-
-    .service-card p {
-      font-size: 0.95rem;
-      color: var(--text-light);
-      margin-bottom: 1.2rem;
-      line-height: 1.5;
-      text-align: center;
-    }
-
-    .price {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--orange);
-      display: block;
-      text-align: center;
-      margin-top: 0.5rem;
-    }
-
-    /* === Why Choose Us === */
-    .features-list {
-      list-style: none;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .features-list li {
-      padding: 0.75rem 0;
-      border-bottom: 1px dashed #eee;
-      font-size: 1.05rem;
-    }
-    .features-list li:last-child { border-bottom: none; }
-
-    /* === CTA Form — Phone Frame Style === */
-    .cta-form {
-      background: var(--bg);
-      padding: 4rem 0;
-      text-align: center;
-    }
-
-    .form-card {
-      background: var(--card);
-      border-radius: 20px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
-      width: 100%;
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 2.5rem;
-    }
-
-    .form-card h2 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      color: var(--text);
-    }
-
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-    }
-
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: border-color 0.3s;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-    }
-
-    .form-group textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .helper-text {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      margin-top: 0.4rem;
-      display: block;
-    }
-
-    .error-message {
-      color: var(--error);
-      font-size: 0.85rem;
-      margin-top: 0.4rem;
-      display: none;
-    }
-
-    .btn-submit {
-      width: 100%;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 14px 0;
-      font-size: 1.05rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 1rem;
-    }
-    .btn-submit:hover { background: var(--primary-dark); }
-
-    .consent {
-      margin-top: 1.5rem;
-      font-size: 0.85rem;
-      color: var(--text-light);
-      line-height: 1.5;
-      text-align: left;
-    }
-    .consent a {
-      color: var(--primary);
-      text-decoration: underline;
-    }
-
-    /* === Footer === */
-    footer {
-      background: #1a1a1a;
-      color: #ddd;
-      padding: 3rem 0 2rem;
-    }
-
-    .footer-inner {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .footer-logo h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
-      color: #fff;
-    }
-    .footer-logo p {
-      font-size: 0.95rem;
-      opacity: 0.8;
-    }
-
-    .footer-contact a {
-      display: block;
-      margin: 0.5rem 0;
-      font-size: 0.95rem;
-    }
-
-    .footer-nav h3 {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
-    .footer-nav ul { list-style: none; }
-    .footer-nav li { margin-bottom: 0.6rem; }
-    .footer-nav a {
-      color: #bbb;
-      transition: color 0.3s;
-    }
-    .footer-nav a:hover { color: #fff; }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 2rem;
-      border-top: 1px solid #333;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-    .footer-bottom a {
-      color: #aaa;
-      margin: 0 0.5rem;
-    }
-
-    /* === Отзывы клиентов === */
-    .reviews-section {
-      background: var(--bg);
-      padding: 4rem 0;
-      text-align: center;
-    }
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .review-card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .review-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    .review-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
-      background: #e6f0ff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: var(--primary);
-    }
-
-    .review-name {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .review-date {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      margin-bottom: 1rem;
-    }
-
-    .review-text {
-      font-size: 1rem;
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* === Акции === */
-    .promotions-section {
-      background: linear-gradient(135deg, #ffe6cc 0%, #ffddb3 100%);
-      padding: 4rem 0;
-      text-align: center;
-    }
-
-    .promotions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .promotion-card {
-      background: var(--card);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .promotion-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    .promotion-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
-
-    .promotion-desc {
-      font-size: 1rem;
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    /* === Галерея === */
-    .gallery-section {
-      padding: 4rem 0;
-      text-align: center;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: auto;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.1);
-    }
-
-    /* === Responsive === */
-    @media (max-width: 768px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: center;
-      }
-      .hero-title {
-        font-size: 2.2rem;
-      }
-      .hero-subtitle {
-        font-size: 1.5rem;
-      }
-      .hero-actions {
-        flex-direction: column;
-        align-items: center;
-      }
-      .hero-badges {
-        flex-direction: column;
-        align-items: center;
-      }
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Мастер на час в Екатеринбурге. Сантехник, электрик, сборка мебели. Гарантия 12 месяцев. Выезд за 30 минут.">
+    <title>Мастер на час Екатеринбург | Уютный дом — Бытовой ремонт с гарантией</title>
+    
+    <!-- Preconnect для оптимизации загрузки -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Цветовая палитра */
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            
+            /* Нейтральные цвета */
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            /* Семантические цвета */
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+            
+            /* Градиенты */
+            --gradient-primary: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            --gradient-secondary: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            --gradient-dark: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            
+            /* Тени */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            
+            /* Скругление */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            --radius-full: 9999px;
+            
+            /* Отступы */
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+            --spacing-2xl: 3rem;
+            --spacing-3xl: 4rem;
+            
+            /* Анимации */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background: var(--gray-50);
+            overflow-x: hidden;
+        }
+
+        /* Утилиты */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-lg);
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+            transition: var(--transition-base);
+        }
+
+        .header.scrolled {
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--spacing-md) 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-xl);
+            list-style: none;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition-base);
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .header-contacts {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+        }
+
+        .phone-link {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--gray-900);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .phone-link:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9375rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md), 0 0 0 0 rgba(37, 99, 235, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl), 0 0 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray-700);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: white;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--spacing-xl);
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .hero-badge i {
+            color: var(--secondary);
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-lg);
+            color: var(--gray-900);
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.7;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: var(--spacing-2xl);
+            animation: fadeInUp 0.6s ease 0.4s both;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-top: var(--spacing-xs);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeIn 0.8s ease 0.5s both;
+        }
+
+        .hero-card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: var(--spacing-2xl);
+            box-shadow: var(--shadow-2xl);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: var(--transition-base);
+        }
+
+        .hero-card:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .hero-card-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero-card-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .hero-card-info h3 {
+            font-size: 1.25rem;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .hero-card-info p {
+            color: var(--gray-500);
+            font-size: 0.875rem;
+        }
+
+        .hero-card-body {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .hero-card-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: var(--gray-50);
+            border-radius: var(--radius-lg);
+            transition: var(--transition-fast);
+        }
+
+        .hero-card-item:hover {
+            background: var(--gray-100);
+            transform: translateX(8px);
+        }
+
+        .hero-card-item i {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Services Section */
+        .services {
+            padding: var(--spacing-3xl) 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-3xl);
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .service-card {
+            position: relative;
+            padding: var(--spacing-2xl);
+            background: white;
+            border: 2px solid var(--gray-100);
+            border-radius: var(--radius-2xl);
+            transition: var(--transition-base);
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin-bottom: var(--spacing-lg);
+            transition: var(--transition-base);
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .service-description {
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .service-price {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .price-label {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        /* Features Section */
+        .features {
+            padding: var(--spacing-3xl) 0;
+            background: var(--gray-900);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .features .section-title,
+        .features .section-subtitle {
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: var(--spacing-2xl);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-2xl);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-base);
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: var(--spacing-lg);
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.4);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-text {
+            color: var(--gray-400);
+            font-size: 0.9375rem;
+            line-height: 1.6;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: var(--spacing-3xl) 0;
+            background: var(--gray-50);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .review-card {
+            background: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-base);
+        }
+
+        .review-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .review-meta h4 {
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .review-date {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+
+        .review-rating {
+            display: flex;
+            gap: var(--spacing-xs);
+            color: var(--secondary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .review-text {
+            color: var(--gray-600);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Gallery Section - ИСПРАВЛЕННАЯ */
+        .gallery {
+            padding: var(--spacing-3xl) 0;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            background: var(--gray-100);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+            display: block;
+        }
+
+        .gallery-item img[src=""], 
+        .gallery-item img:not([src]),
+        .gallery-item img.error {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 250px;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: var(--spacing-xl);
+            opacity: 0;
+            transition: var(--transition-base);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+            transform: translateY(20px);
+            transition: var(--transition-base);
+        }
+
+        .gallery-item:hover .gallery-title {
+            transform: translateY(0);
+        }
+
+        /* Placeholder для галереи */
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
+            color: var(--gray-500);
+            font-size: 0.9375rem;
+            text-align: center;
+            padding: var(--spacing-lg);
+        }
+
+        .gallery-placeholder i {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: var(--gray-400);
+        }
+
+        /* Promotions Section */
+        .promotions {
+            padding: var(--spacing-3xl) 0;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+
+        .promotions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+        }
+
+        .promotion-card {
+            background: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-base);
+        }
+
+        .promotion-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .promotion-badge {
+            position: absolute;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            background: var(--gradient-secondary);
+            color: white;
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.875rem;
+            animation: pulse 2s infinite;
+        }
+
+        .promotion-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: var(--secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .promotion-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .promotion-text {
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        /* Contact Form Section */
+        .contact {
+            padding: var(--spacing-3xl) 0;
+            background: var(--gray-50);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-3xl);
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .contact-info > p {
+            color: var(--gray-600);
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-2xl);
+            line-height: 1.7;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+        }
+
+        .contact-item-text {
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        .contact-form {
+            background: white;
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: var(--spacing-sm);
+            font-size: 0.9375rem;
+        }
+
+        .form-label .required {
+            color: var(--error);
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: 2px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition-fast);
+            background: white;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: var(--gray-400);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-hint {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-top: var(--spacing-xs);
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: var(--spacing-lg);
+            font-size: 1.0625rem;
+        }
+
+        .form-privacy {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid var(--gray-200);
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            line-height: 1.6;
+        }
+
+        .form-privacy a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .form-privacy a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-900);
+            color: white;
+            padding: var(--spacing-3xl) 0 var(--spacing-xl);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--spacing-3xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-brand p {
+            color: var(--gray-400);
+            line-height: 1.7;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-title {
+            font-weight: 700;
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-lg);
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .footer-links a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: var(--transition-fast);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--gray-800);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        .footer-copyright {
+            color: var(--gray-400);
+            font-size: 0.9375rem;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .footer-legal a {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: var(--transition-fast);
+        }
+
+        .footer-legal a:hover {
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu,
+            .header-contacts .btn {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: var(--spacing-2xl) 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: var(--spacing-lg);
+            }
+
+            .services-grid,
+            .reviews-grid,
+            .gallery-grid,
+            .promotions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-2xl);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: var(--radius-full);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Focus styles for accessibility */
+        :focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="header-nav">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <span>Уютный дом</span>
+                </a>
 
-<a href="#main" class="skip-link">Перейти к основному контенту</a>
+                <ul class="nav-menu">
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
 
-<!-- === Header === -->
-<header>
-  <div class="container">
-    <div class="header-inner">
-      <a href="#" class="logo">Уютный дом</a>
-      <nav class="nav-links">
-        <a href="#services">Услуги</a>
-        <a href="#about">О нас</a>
-        <a href="#reviews">Отзывы</a>
-        <a href="#contact">Контакты</a>
-      </nav>
-      <div class="nav-actions">
-        <a href="tel:+73430000000" class="btn btn-phone">+7 (343) 000-00-00</a>
-        <a href="#contact" class="btn btn-primary">Вызвать мастера</a>
-      </div>
-    </div>
-  </div>
-</header>
-
-<main id="main">
-
-  <!-- === Hero === -->
-  <section class="hero-section">
-    <div class="container">
-      <h1 class="hero-title">Мастер на час в Екатеринбурге</h1>
-      <p class="hero-subtitle">с гарантией 12 месяцев</p>
-      <p class="hero-desc">
-        Сантехник, электрик, сборка мебели, мелкий ремонт — решим любую задачу за 1 час.<br>
-        Фиксированные цены, выезд за 30 минут, мастера с опытом 5+ лет.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#contact" class="btn-primary">📞 Вызвать мастера</a>
-        <a href="#services" class="btn-outline">Смотреть услуги</a>
-      </div>
-
-      <div class="hero-badges">
-        <span class="badge">Гарантия 12 месяцев</span>
-        <span class="badge">Выезд за 30 минут</span>
-        <span class="badge">Фиксированная цена</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- === Популярные услуги === -->
-  <section id="services" class="services">
-    <div class="container">
-      <h2 class="section-title">Популярные услуги</h2>
-      <p class="section-subtitle">
-        Все работы выполняются с использованием профессионального инструмента и оригинальных запчастей.  
-        Цена фиксируется до начала работ — никаких сюрпризов.
-      </p>
-
-      <div class="services-grid">
-        <article class="service-card">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2v20M17 5H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H6"></path>
-            </svg>
-          </div>
-          <h3>Сантехнические работы</h3>
-          <p>Устранение засоров, замена смесителей, установка унитазов, подключение стиральных машин и водонагревателей.</p>
-          <strong class="price">от 890 ₽</strong>
-        </article>
-
-        <article class="service-card">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 10V3L4 14h7v7l9-11h-z"></path>
-            </svg>
-          </div>
-          <h3>Электромонтаж</h3>
-          <p>Замена розеток и выключателей, установка люстр, диагностика проводки, сборка электрощитков.</p>
-          <strong class="price">от 750 ₽</strong>
-        </article>
-
-        <article class="service-card">
-          <div class="service-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14.5 2H19a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-4.5"></path>
-              <path d="M9.5 2H5a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h4.5"></path>
-              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7"></path>
-              <line x1="10" y1="20" x2="14" y2="20"></line>
-              <line x1="12" y1="16" x2="12" y2="20"></line>
-            </svg>
-          </div>
-          <h3>Сборка мебели</h3>
-          <p>Сборка шкафов, кухонь, кроватей, установка техники, навеска полок, карнизов, зеркал.</p>
-          <strong class="price">от 650 ₽</strong>
-        </article>
-      </div>
-
-      <div class="text-center">
-        <a href="#contact" class="btn-outline">Все услуги и цены →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- === Почему выбрали нас === -->
-  <section id="about" class="why-us">
-    <div class="container">
-      <h2 class="section-title">Почему 2 300+ клиентов выбрали Уютный дом</h2>
-      <ul class="features-list">
-        <li><strong>Гарантия 12 месяцев</strong> на все виды работ по договору</li>
-        <li><strong>Фиксированная цена</strong> — никаких доплат после начала работ</li>
-        <li><strong>Мастера с опытом 5+ лет</strong> — проверка службы безопасности</li>
-        <li><strong>Оплата после</strong> — только когда вы довольны результатом</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- === Отзывы клиентов === -->
-  <section id="reviews" class="reviews-section">
-    <div class="container">
-      <h2 class="section-title">Отзывы клиентов</h2>
-      <p class="section-subtitle">
-        Реальные истории наших клиентов. Мы гордимся каждым отзывом!
-      </p>
-
-      <div class="reviews-grid">
-        <article class="review-card">
-          <div class="review-avatar">😊</div>
-          <h3 class="review-name">Иван Иванов</h3>
-          <p class="review-date">12 марта 2026</p>
-          <p class="review-text">
-            Мастер приехал вовремя, всё сделал аккуратно. Рекомендую!
-          </p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-avatar">👩‍💻</div>
-          <h3 class="review-name">Мария Петрова</h3>
-          <p class="review-date">10 марта 2026</p>
-          <p class="review-text">
-            Спасибо за быструю помощь! Проблема была решена за 30 минут.
-          </p>
-        </article>
-
-        <article class="review-card">
-          <div class="review-avatar">👨‍🔧</div>
-          <h3 class="review-name">Алексей Сидоров</h3>
-          <p class="review-date">8 марта 2026</p>
-          <p class="review-text">
-            Профессиональный подход и качественные материалы. Очень доволен!
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- === Акции и специальные предложения === -->
-  <section id="promotions" class="promotions-section">
-    <div class="container">
-      <h2 class="section-title">Акции и специальные предложения</h2>
-      <p class="section-subtitle">
-        Успейте воспользоваться выгодными предложениями прямо сейчас!
-      </p>
-
-      <div class="promotions-grid">
-        <article class="promotion-card">
-          <h3 class="promotion-title">Скидка 10% на первую заявку</h3>
-          <p class="promotion-desc">
-            Получите скидку 10% на первый заказ. Просто оставьте заявку на сайте.
-          </p>
-        </article>
-
-        <article class="promotion-card">
-          <h3 class="promotion-title">Бесплатный выезд мастера</h3>
-          <p class="promotion-desc">
-            При заказе от 2000 ₽ выезд мастера бесплатно.
-          </p>
-        </article>
-
-        <article class="promotion-card">
-          <h3 class="promotion-title">Приведи друга — получи скидку</h3>
-          <p class="promotion-desc">
-            Приведите друга и получите дополнительную скидку 5% на следующий заказ.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- === Галерея выполненных работ === -->
-  <section id="gallery" class="gallery-section">
-    <div class="container">
-      <h2 class="section-title">Галерея выполненных работ</h2>
-      <p class="section-subtitle">
-        Примеры наших работ. Качество, которое говорит само за себя.
-      </p>
-
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="https://via.placeholder.com/300x200?text=До+ремонта" alt="До ремонта">
+                <div class="header-contacts">
+                    <a href="tel:+73430000000" class="phone-link">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 (343) 000-00-00</span>
+                    </a>
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-tools"></i>
+                        Вызвать мастера
+                    </a>
+                    <button class="mobile-menu-btn" aria-label="Открыть меню">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
         </div>
-        <div class="gallery-item">
-          <img src="https://via.placeholder.com/300x200?text=После+ремонта" alt="После ремонта">
+    </header>
+
+    <main id="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <i class="fas fa-star"></i>
+                            <span>Работаем ежедневно с 8:00 до 22:00</span>
+                        </div>
+                        <h1 class="hero-title">
+                            Мастер на час в Екатеринбурге с 
+                            <span class="gradient-text">гарантией 12 месяцев</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Сантехник, электрик, сборка мебели, мелкий ремонт — решим любую задачу за 1 час. 
+                            Фиксированные цены, выезд за 30 минут, мастера с опытом 5+ лет.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn btn-primary btn-lg">
+                                <i class="fas fa-phone-alt"></i>
+                                Вызвать мастера
+                            </a>
+                            <a href="#services" class="btn btn-secondary btn-lg">
+                                <i class="fas fa-list"></i>
+                                Смотреть услуги
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">2 300+</div>
+                                <div class="stat-label">довольных клиентов</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">5+</div>
+                                <div class="stat-label">лет опыта мастеров</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">месяцев гарантии</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="hero-card">
+                            <div class="hero-card-header">
+                                <div class="hero-card-avatar">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="hero-card-info">
+                                    <h3>Ваш мастер</h3>
+                                    <p>Приедет через 30 минут</p>
+                                </div>
+                            </div>
+                            <div class="hero-card-body">
+                                <div class="hero-card-item">
+                                    <i class="fas fa-wrench"></i>
+                                    <div>
+                                        <strong>Профессиональный инструмент</strong>
+                                        <p style="color: var(--gray-500); font-size: 0.875rem;">Все необходимые инструменты</p>
+                                    </div>
+                                </div>
+                                <div class="hero-card-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <div>
+                                        <strong>Гарантия качества</strong>
+                                        <p style="color: var(--gray-500); font-size: 0.875rem;">12 месяцев гарантии</p>
+                                    </div>
+                                </div>
+                                <div class="hero-card-item">
+                                    <i class="fas fa-ruble-sign"></i>
+                                    <div>
+                                        <strong>Фиксированная цена</strong>
+                                        <p style="color: var(--gray-500); font-size: 0.875rem;">Без скрытых платежей</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-label">Наши услуги</span>
+                    <h2 class="section-title">Популярные услуги</h2>
+                    <p class="section-subtitle">
+                        Все работы выполняются с использованием профессионального инструмента и оригинальных запчастей. 
+                        Цена фиксируется до начала работ — никаких сюрпризов.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <article class="service-card animate-on-scroll">
+                        <div class="service-icon">
+                            <i class="fas fa-faucet"></i>
+                        </div>
+                        <h3 class="service-title">Сантехнические работы</h3>
+                        <p class="service-description">
+                            Устранение засоров, замена смесителей, установка унитазов, 
+                            подключение стиральных машин и водонагревателей.
+                        </p>
+                        <div class="service-price">
+                            <div>
+                                <div class="price-tag">от 890 ₽</div>
+                                <div class="price-label">/ выезд</div>
+                            </div>
+                            <a href="#contact" class="btn btn-primary">
+                                Заказать
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="service-card animate-on-scroll">
+                        <div class="service-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="service-title">Электромонтаж</h3>
+                        <p class="service-description">
+                            Замена розеток и выключателей, установка люстр, 
+                            диагностика проводки, сборка электрощитков.
+                        </p>
+                        <div class="service-price">
+                            <div>
+                                <div class="price-tag">от 750 ₽</div>
+                                <div class="price-label">/ выезд</div>
+                            </div>
+                            <a href="#contact" class="btn btn-primary">
+                                Заказать
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="service-card animate-on-scroll">
+                        <div class="service-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <h3 class="service-title">Сборка мебели</h3>
+                        <p class="service-description">
+                            Сборка шкафов, кухонь, кроватей, установка техники, 
+                            навеска полок, карнизов, зеркал.
+                        </p>
+                        <div class="service-price">
+                            <div>
+                                <div class="price-tag">от 650 ₽</div>
+                                <div class="price-label">/ выезд</div>
+                            </div>
+                            <a href="#contact" class="btn btn-primary">
+                                Заказать
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <div style="text-align: center; margin-top: var(--spacing-2xl);">
+                    <a href="#contact" class="btn btn-secondary">
+                        Все услуги и цены
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="about">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-label" style="background: rgba(255,255,255,0.1); color: white;">Почему мы</span>
+                    <h2 class="section-title">Почему 2 300+ клиентов выбрали Уютный дом</h2>
+                    <p class="section-subtitle">
+                        Мы ценим каждого клиента и делаем всё, чтобы вы остались довольны
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="feature-title">Гарантия 12 месяцев</h3>
+                        <p class="feature-text">на все виды работ по договору</p>
+                    </div>
+
+                    <div class="feature-item animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3 class="feature-title">Фиксированная цена</h3>
+                        <p class="feature-text">никаких доплат после начала работ</p>
+                    </div>
+
+                    <div class="feature-item animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h3 class="feature-title">Мастера с опытом 5+ лет</h3>
+                        <p class="feature-text">проверка службы безопасности</p>
+                    </div>
+
+                    <div class="feature-item animate-on-scroll">
+                        <div class="feature-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <h3 class="feature-title">Оплата после</h3>
+                        <p class="feature-text">только когда вы довольны результатом</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews" id="reviews">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-label">Отзывы</span>
+                    <h2 class="section-title">Отзывы клиентов</h2>
+                    <p class="section-subtitle">
+                        Реальные истории наших клиентов. Мы гордимся каждым отзывом!
+                    </p>
+                </div>
+
+                <div class="reviews-grid">
+                    <article class="review-card animate-on-scroll">
+                        <div class="review-header">
+                            <div class="review-avatar">ИИ</div>
+                            <div class="review-meta">
+                                <h4>Иван Иванов</h4>
+                                <div class="review-date">12 марта 2026</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">
+                            Мастер приехал вовремя, всё сделал аккуратно. Рекомендую!
+                        </p>
+                    </article>
+
+                    <article class="review-card animate-on-scroll">
+                        <div class="review-header">
+                            <div class="review-avatar">МП</div>
+                            <div class="review-meta">
+                                <h4>Мария Петрова</h4>
+                                <div class="review-date">10 марта 2026</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">
+                            Спасибо за быструю помощь! Проблема была решена за 30 минут.
+                        </p>
+                    </article>
+
+                    <article class="review-card animate-on-scroll">
+                        <div class="review-header">
+                            <div class="review-avatar">АС</div>
+                            <div class="review-meta">
+                                <h4>Алексей Сидоров</h4>
+                                <div class="review-date">8 марта 2026</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">
+                            Профессиональный подход и качественные материалы. Очень доволен!
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Promotions Section -->
+        <section class="promotions">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-label" style="background: rgba(245, 158, 11, 0.2); color: #92400e;">Акции</span>
+                    <h2 class="section-title">Акции и специальные предложения</h2>
+                    <p class="section-subtitle">
+                        Успейте воспользоваться выгодными предложениями прямо сейчас!
+                    </p>
+                </div>
+
+                <div class="promotions-grid">
+                    <article class="promotion-card animate-on-scroll">
+                        <span class="promotion-badge">HOT</span>
+                        <div class="promotion-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <h3 class="promotion-title">Скидка 10% на первую заявку</h3>
+                        <p class="promotion-text">
+                            Получите скидку 10% на первый заказ. Просто оставьте заявку на сайте.
+                        </p>
+                    </article>
+
+                    <article class="promotion-card animate-on-scroll">
+                        <div class="promotion-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3 class="promotion-title">Бесплатный выезд мастера</h3>
+                        <p class="promotion-text">
+                            При заказе от 2000 ₽ выезд мастера бесплатно.
+                        </p>
+                    </article>
+
+                    <article class="promotion-card animate-on-scroll">
+                        <div class="promotion-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="promotion-title">Приведи друга — получи скидку</h3>
+                        <p class="promotion-text">
+                            Приведите друга и получите дополнительную скидку 5% на следующий заказ.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section - ИСПРАВЛЕННАЯ ВЕРСИЯ -->
+        <section class="gallery" id="gallery">
+            <div class="container">
+                <div class="section-header animate-on-scroll">
+                    <span class="section-label">Галерея</span>
+                    <h2 class="section-title">Галерея выполненных работ</h2>
+                    <p class="section-subtitle">
+                        Примеры наших работ. Качество, которое говорит само за себя.
+                    </p>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="images/gallery/mirror.jpg" 
+                             alt="Установка зеркала с подсветкой"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="gallery-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Фото зеркала с подсветкой</span>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Установка зеркала с подсветкой</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="images/gallery/tv-zone.jpg" 
+                             alt="Монтаж ТВ зоны с камином"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="gallery-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Фото ТВ зоны</span>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Монтаж ТВ зоны с камином</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="images/gallery/crib.jpg" 
+                             alt="Сборка детской кроватки"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="gallery-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Фото детской кроватки</span>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Сборка детской кроватки</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="images/gallery/sink.jpg" 
+                             alt="Установка мойки и смесителя"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="gallery-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Фото установки мойки</span>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Установка мойки и смесителя</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="images/gallery/washer.jpg" 
+                             alt="Установка стиральной и сушильной машины"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="gallery-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Фото установки стиральной машины</span>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Установка стиральной и сушильной машины</h3>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item animate-on-scroll">
+                        <img src="images/gallery/toilet.jpg" 
+                             alt="Установка унитаза с инсталляцией"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                        <div class="gallery-placeholder" style="display: none;">
+                            <i class="fas fa-image"></i>
+                            <span>Фото установки унитаза</span>
+                        </div>
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Установка унитаза с инсталляцией</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info animate-on-scroll">
+                        <h3>Оставьте заявку — перезвоним за 5 минут</h3>
+                        <p>
+                            Заполните форму и наш менеджер свяжется с вами для уточнения деталей
+                        </p>
+
+                        <div class="contact-list">
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="contact-item-text">+7 (343) 000-00-00</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="contact-item-text">dim_li@mail.ru</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="contact-item-text">г. Екатеринбург</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-item-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="contact-item-text">Ежедневно с 8:00 до 22:00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form animate-on-scroll" id="contactForm">
+                        <div class="form-group">
+                            <label class="form-label" for="name">
+                                Ваше имя <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                class="form-input" 
+                                placeholder="Иван Иванов"
+                                required
+                                minlength="2"
+                                maxlength="50"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">
+                                Телефон <span class="required">*</span>
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="form-input" 
+                                placeholder="+7 (999) 123-45-67"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="service">
+                                Какая услуга нужна? <span class="required">*</span>
+                            </label>
+                            <select id="service" name="service" class="form-select" required>
+                                <option value="">Выберите услугу</option>
+                                <option value="plumbing">🔧 Сантехнические работы</option>
+                                <option value="electrical">⚡ Электромонтаж</option>
+                                <option value="furniture">🪑 Сборка мебели</option>
+                                <option value="repair">🔨 Мелкий ремонт</option>
+                                <option value="other">❓ Другое</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">
+                                Детали задачи
+                            </label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                class="form-textarea" 
+                                placeholder="Опишите вашу задачу подробнее..."
+                            ></textarea>
+                            <p class="form-hint">Чем подробнее — тем точнее назовём цену и время</p>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary form-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Отправить заявку
+                        </button>
+
+                        <div class="form-privacy">
+                            Нажимая «Отправить», вы соглашаетесь с 
+                            <a href="/privacy">политикой конфиденциальности</a>.<br>
+                            Мы не передаём данные третьим лицам. Обработка персональных данных 
+                            осуществляется в соответствии с 152-ФЗ.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <span>Уютный дом</span>
+                    </a>
+                    <p>
+                        Сервис бытовых услуг в Екатеринбурге. 
+                        Работаем ежедневно с 8:00 до 22:00 без выходных.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Услуги</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Сантехник</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Электрик</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Сборка мебели</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Мелкий ремонт</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Все услуги и цены</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Компания</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> О нас</a></li>
+                        <li><a href="#reviews"><i class="fas fa-chevron-right"></i> Отзывы клиентов</a></li>
+                        <li><a href="/prices"><i class="fas fa-chevron-right"></i> Прайс-лист</a></li>
+                        <li><a href="/guarantee"><i class="fas fa-chevron-right"></i> Гарантия</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 class="footer-title">Контакты</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+73430000000"><i class="fas fa-phone"></i> +7 (343) 000-00-00</a></li>
+                        <li><a href="mailto:dim_li@mail.ru"><i class="fas fa-envelope"></i> dim_li@mail.ru</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> г. Екатеринбург</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2024–2026 Уютный дом. Все права защищены.
+                </p>
+                <div class="footer-legal">
+                    <a href="/privacy">Политика конфиденциальности</a>
+                    <a href="/terms">Договор оферты</a>
+                </div>
+            </div>
         </div>
-        <div class="gallery-item">
-          <img src="https://via.placeholder.com/300x200?text=Смеситель" alt="Установка смесителя">
-        </div>
-        <div class="gallery-item">
-          <img src="https://via.placeholder.com/300x200?text=Мебель" alt="Сборка мебели">
-        </div>
-      </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- === Оставить заявку === -->
-  <section id="contact" class="cta-form">
-    <div class="container">
-      <div class="form-card">
-        <h2>Оставьте заявку — перезвоним за 5 минут</h2>
+    <!-- JavaScript -->
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
 
-        <div class="form-group">
-          <label for="name">Ваше имя *</label>
-          <input type="text" id="name" name="name" placeholder="Иван Иванов">
-          <span class="helper-text">Пожалуйста, введите имя (2–50 символов)</span>
-          <span class="error-message">Пожалуйста, введите имя (2–50 символов)</span>
-        </div>
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
 
-        <div class="form-group">
-          <label for="phone">Телефон *</label>
-          <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" value="+7 (999) 123-45-67">
-          <span class="helper-text">Введите корректный номер телефона<br>Например: +7 (999) 123-45-67</span>
-          <span class="error-message">Введите корректный номер телефона</span>
-        </div>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
 
-        <div class="form-group">
-          <label for="service">Какая услуга нужна?</label>
-          <select id="service" name="service">
-            <option value="">Выберите услугу</option>
-            <option value="plumbing">Сантехнические работы</option>
-            <option value="electric">Электромонтаж</option>
-            <option value="furniture">Сборка мебели</option>
-            <option value="repair">Мелкий ремонт</option>
-            <option value="other">Другое</option>
-          </select>
-          <span class="helper-text">Выберите, чтобы мы подготовили мастера с нужным инструментом</span>
-        </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-        <div class="form-group">
-          <label for="details">Детали задачи</label>
-          <textarea id="details" name="details" placeholder="Опишите, что нужно сделать..."></textarea>
-          <span class="helper-text">Чем подробнее — тем точнее назовём цену и время</span>
-        </div>
+        document.querySelectorAll('.animate-on-scroll').forEach((el) => {
+            observer.observe(el);
+        });
 
-        <button type="button" class="btn-submit" onclick="submitForm()">
-          📩 Отправить заявку
-        </button>
+        // Phone mask
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 0) {
+                    if (value[0] === '7' || value[0] === '8') {
+                        value = value.substring(1);
+                    }
+                    let formattedValue = '+7';
+                    if (value.length > 0) {
+                        formattedValue += ' (' + value.substring(0, 3);
+                    }
+                    if (value.length >= 3) {
+                        formattedValue += ') ' + value.substring(3, 6);
+                    }
+                    if (value.length >= 6) {
+                        formattedValue += '-' + value.substring(6, 8);
+                    }
+                    if (value.length >= 8) {
+                        formattedValue += '-' + value.substring(8, 10);
+                    }
+                    e.target.value = formattedValue;
+                }
+            });
+        }
 
-        <div class="consent">
-          Нажимая «Отправить», вы соглашаетесь с <a href="/privacy">политикой конфиденциальности</a>.<br>
-          Мы не передаём данные третьим лицам. Обработка персональных данных осуществляется в соответствии с 152-ФЗ.
-        </div>
-      </div>
-    </div>
-  </section>
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                // Here you would normally send the data to your server
+                console.log('Form ', data);
+                
+                // Show success message
+                alert('Спасибо за заявку! Мы перезвоним вам в ближайшее время.');
+                contactForm.reset();
+            });
+        }
 
-</main>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <h2>Уютный дом</h2>
-        <p>Сервис бытовых услуг в Екатеринбурге.<br>Работаем ежедневно с 8:00 до 22:00 без выходных.</p>
-      </div>
-      <div class="footer-contact">
-        <a href="tel:+73430000000">+7 (343) 000-00-00</a>
-        <a href="mailto:dim_li@mail.ru">dim_li@mail.ru</a>
-        <address>г. Екатеринбург</address>
-      </div>
-      <nav class="footer-nav">
-        <h3>Услуги</h3>
-        <ul>
-          <li><a href="#services">Сантехник</a></li>
-          <li><a href="#services">Электрик</a></li>
-          <li><a href="#services">Сборка мебели</a></li>
-          <li><a href="#services">Мелкий ремонт</a></li>
-          <li><a href="#services">Все услуги и цены</a></li>
-        </ul>
-      </nav>
-      <nav class="footer-nav">
-        <h3>Компания</h3>
-        <ul>
-          <li><a href="#about">О нас</a></li>
-          <li><a href="#reviews">Отзывы клиентов</a></li>
-          <li><a href="/prices">Прайс-лист</a></li>
-          <li><a href="/guarantee">Гарантия</a></li>
-          <li><a href="#contact">Контакты</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="footer-bottom">
-      © 2024–2026 Уютный дом. Все права защищены.<br>
-      <a href="/privacy">Политика конфиденциальности</a> | <a href="/terms">Договор оферты</a>
-    </div>
-  </div>
-</footer>
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
 
-<script>
-  function submitForm() {
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (mobileMenuBtn && navMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (navMenu.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
 
-    const nameErr = document.querySelector('.form-group:nth-child(1) .error-message');
-    const phoneErr = document.querySelector('.form-group:nth-child(2) .error-message');
+        // Add CSS for mobile menu
+        const style = document.createElement('style');
+        style.textContent = `
+            @media (max-width: 768px) {
+                .nav-menu.active {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: white;
+                    padding: var(--spacing-lg);
+                    box-shadow: var(--shadow-lg);
+                    gap: var(--spacing-md);
+                }
+            }
+        `;
+        document.head.appendChild(style);
 
-    // Сброс ошибок
-    nameErr.style.display = 'none';
-    phoneErr.style.display = 'none';
+        // Performance: Lazy load images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            imageObserver.unobserve(img);
+                        }
+                    }
+                });
+            });
 
-    let valid = true;
-
-    if (!name || name.length < 2 || name.length > 
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+    </script>
+</body>
+</html>
