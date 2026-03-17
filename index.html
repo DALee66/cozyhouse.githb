@@ -700,11 +700,16 @@ margin-bottom: 1.25rem;
 font-size: 1.125rem;
 font-weight: 700;
 margin-bottom: 0.5rem;
+word-wrap: break-word;
+overflow-wrap: break-word;
+hyphens: auto;
 }
 .feature-text {
 color: var(--gray-400);
 font-size: 0.875rem;
 line-height: 1.5;
+word-wrap: break-word;
+overflow-wrap: break-word;
 }
 /* Reviews Section */
 .reviews {
@@ -1184,8 +1189,8 @@ transform: translateY(0);
 }
 
 /* ============================================
-   MOBILE RESPONSIVE DESIGN
-   ============================================ */
+MOBILE RESPONSIVE DESIGN - ИСПРАВЛЕНИЯ
+============================================ */
 
 /* Small phones (up to 375px) */
 @media (max-width: 375px) {
@@ -1356,7 +1361,18 @@ grid-template-columns: 1fr 1fr;
 }
 
 .features-grid {
-grid-template-columns: repeat(4, 1fr);
+grid-template-columns: 1fr 1fr;
+gap: 1rem;
+}
+
+.feature-item {
+padding: 1.25rem;
+}
+
+.feature-icon {
+width: 60px;
+height: 60px;
+font-size: 1.5rem;
 }
 
 .contact-grid {
@@ -1403,7 +1419,12 @@ grid-template-columns: 1fr 1fr;
 }
 
 .features-grid {
-grid-template-columns: repeat(4, 1fr);
+grid-template-columns: 1fr 1fr;
+gap: 1rem;
+}
+
+.feature-item {
+padding: 1.5rem;
 }
 
 .contact-grid {
@@ -1438,7 +1459,7 @@ grid-template-columns: repeat(2, 1fr);
 }
 
 .features-grid {
-grid-template-columns: repeat(4, 1fr);
+grid-template-columns: repeat(2, 1fr);
 }
 
 .footer-grid {
@@ -1594,6 +1615,27 @@ display: block;
 /* Ensure forms are usable on mobile */
 input, select, textarea {
 font-size: 16px; /* Prevents zoom on iOS */
+}
+
+/* Additional fixes for features section */
+.features {
+overflow-x: hidden;
+max-width: 100%;
+}
+
+.features-grid {
+overflow-x: hidden;
+}
+
+/* Ensure no overflow in containers */
+.container,
+.section-header,
+.features-grid,
+.services-grid,
+.reviews-grid,
+.gallery-grid {
+max-width: 100%;
+overflow-x: hidden;
 }
 </style>
 </head>
