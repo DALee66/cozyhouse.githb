@@ -379,11 +379,11 @@ transform: translateY(-4px);
 
 /* Hero Section */
 .hero {
-margin-top: 70px;
-padding: 4rem 0;
-background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
-position: relative;
-overflow: hidden;
+  margin-top: 70px;
+  padding-bottom: 2rem; /* Было 4rem — уменьшаем */
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 body.dark .hero {
@@ -654,10 +654,15 @@ font-size: 0.75rem;
 line-height: 1.4;
 }
 
-/* Services Section */
+/* ==========================================================================
+   СЕКЦИЯ УСЛУГ — ПРИНУДИТЕЛЬНЫЙ ПОДЪЁМ
+   ========================================================================== */
 .services {
-padding: 3.5rem 0;
-background: white;
+  padding: 2rem 0 !important; /* Уменьшаем отступы */
+  margin-top: -40px !important; /* Сильно поднимаем секцию вверх */
+  background: white !important;
+  position: relative; /* Важно для корректного наложения */
+  z-index: 5;
 }
 
 body.dark .services {
@@ -667,7 +672,7 @@ background: var(--gray-900);
 .section-header {
 text-align: center;
 max-width: 700px;
-margin: 0 auto 2.5rem;
+margin: 0 auto 3.5rem;
 }
 
 .section-label {
@@ -694,85 +699,120 @@ color: var(--gray-600);
 line-height: 1.6;
 }
 
+/* ==========================================================================
+   СЕТКА УСЛУГ — УМЕНЬШЕННАЯ ВЫСОТА И ВЫРАВНИВАНИЕ
+   ========================================================================== */
+
+/* Контейнер сетки */
 .services-grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem; /* Уменьшен отступ снизу */
 }
 
+/* Карточка услуги */
 .service-card {
-position: relative;
-padding: 1.75rem;
-background: white;
-border: 2px solid var(--gray-100);
-border-radius: var(--radius-2xl);
-transition: var(--transition-base);
-overflow: hidden;
-box-shadow: var(--shadow-card);
+  position: relative;
+  padding: 1.5rem; /* Уменьшено с 1.75rem */
+  background: white;
+  border: 2px solid var(--gray-100);
+  border-radius: var(--radius-2xl);
+  transition: var(--transition-base);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  
+    /* Поднимаем каждую карточку */
+  transform: translateY(-20px);
+  
+  /* === ВЫРАВНИВАНИЕ КОНТЕНТА === */
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Растягиваем на всю высоту ячейки грида */
 }
 
 body.dark .service-card {
-background: var(--gray-800);
-border-color: var(--gray-700);
+  background: var(--gray-800);
+  border-color: var(--gray-700);
 }
 
 .service-card:hover {
-border-color: var(--primary);
-box-shadow: var(--shadow-card-hover);
-transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
 }
 
+/* Иконка услуги */
 .service-icon {
-width: 64px;
-height: 64px;
-background: var(--gradient-primary);
-border-radius: var(--radius-xl);
-display: flex;
-align-items: center;
-justify-content: center;
-color: white;
-font-size: 1.75rem;
-margin-bottom: 1.25rem;
+  width: 64px;
+  height: 50px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.75rem;
+  margin-bottom: 1rem; /* Уменьшено с 1.25rem */
+  flex-shrink: 0; /* Запрещаем сжатие иконки */
 }
 
+/* Заголовок услуги */
 .service-title {
-font-size: 1.25rem;
-font-weight: 700;
-color: var(--gray-900);
-margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--gray-900);
+  margin-bottom: 0.5rem; /* Уменьшено с 0.75rem */
+  line-height: 1.3;
 }
+/*-------------------------------*/
 
+/* Описание услуги */
 .service-description {
-color: var(--gray-600);
-line-height: 1.6;
-margin-bottom: 1.25rem;
-font-size: 0.9375rem;
+  color: var(--gray-600);
+  line-height: 1.5;
+  margin-bottom: 1rem; /* Уменьшено с 1.25rem */
+  font-size: 0.9375rem;
+  
+  /* Ограничение высоты описания (опционально) */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Максимум 3 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* === БЛОК ЦЕНЫ И КНОПКИ — ПРИЖАТ К НИЗУ === */
 .service-price {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding-top: 1.25rem;
-border-top: 1px solid var(--gray-100);
-flex-wrap: wrap;
-gap: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-100);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  
+  /* === МАГИЯ ВЫРАВНИВАНИЯ === */
+  margin-top: auto; /* Автоматический отступ сверху прижимает блок к низу */
+  flex-shrink: 0; /* Запрещаем сжатие блока с ценой */
 }
 
 .price-tag {
-font-size: 1.25rem;
-font-weight: 800;
-color: var(--primary);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  white-space: nowrap; /* Цена не переносится */
 }
 
 .price-label {
-font-size: 0.8125rem;
-color: var(--gray-500);
+  font-size: 0.8125rem;
+  color: var(--gray-500);
 }
 
+/* Кнопка в карточке */
 .service-card .btn {
-padding: 0.625rem 1.25rem;
-font-size: 0.8125rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.8125rem;
+  white-space: nowrap; /* Кнопка не переносится */
 }
 
 /* Features Section */
@@ -897,7 +937,7 @@ body.dark .reviews-slider-track .review-card {
   background: white;
   border: 2px solid var(--gray-200);
   color: var(--primary);
-  font-size: 1.25rem;
+  font-size: 1.7rem;
   cursor: pointer;
   z-index: 10;
   display: flex;
@@ -1104,40 +1144,97 @@ font-size: 0.9375rem;
   transform: translateY(0);
 }
 
-/* Кнопки навигации */
+/* ==========================================================================
+   КНОПКИ СЛАЙДЕРА — УМЕНЬШЕННАЯ ПРОЗРАЧНОСТЬ
+   ========================================================================== */
 .slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: white;
-  border: 2px solid var(--gray-200);
-  color: var(--primary);
-  font-size: 1.25rem;
+  
+  /* === НАСЫЩЕННЫЙ ФОН БЕЗ ПРОЗРАЧНОСТИ === */
+  background: var(--gradient-primary);
+  /* Или сплошной цвет для максимальной непрозрачности: */
+  /* background: #2563eb; */
+  
+  border: 2px solid transparent;
+  color: white;
+  font-size: 1.5rem;
   cursor: pointer;
   z-index: 10;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: var(--transition-fast);
-  box-shadow: var(--shadow-md);
+  
+  /* === УСИЛЕННАЯ ТЕНЬ === */
+  box-shadow: 
+    0 4px 12px rgba(37, 99, 235, 0.5),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+  
+  /* === УМЕНЬШЕННАЯ ПРОЗРАЧНОСТЬ ОБВОДКИ === */
+  outline: 2px solid rgba(255, 255, 255, 0.5); /* Было 0.3 */
+  outline-offset: 2px;
+  
+  /* === ПОЛНАЯ НЕПРОЗРАЧНОСТЬ === */
+  opacity: 1 !important;
 }
 
-body.dark .slider-btn {
-  background: var(--gray-800);
-  border-color: var(--gray-700);
-}
-
+/* Состояние наведения */
 .slider-btn:hover {
-  background: var(--primary);
+  background: var(--primary-dark);
   color: white;
-  transform: translateY(-50%) scale(1.1);
+  transform: translateY(-50%) scale(1.15);
+  box-shadow: 
+    0 6px 16px rgba(37, 99, 235, 0.6),
+    0 12px 32px rgba(0, 0, 0, 0.4);
+  outline-color: rgba(255, 255, 255, 0.7);
+  opacity: 1 !important;
 }
 
-.slider-btn.prev { left: 0; }
-.slider-btn.next { right: 0; }
+/* Состояние нажатия */
+.slider-btn:active {
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 
+    0 2px 8px rgba(37, 99, 235, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.2);
+  opacity: 1 !important;
+}
+
+/* === НЕАКТИВНОЕ СОСТОЯНИЕ === */
+.slider-btn[style*="opacity: 0.3"] {
+  opacity: 0.5 !important; /* Было 0.3 — сделали менее прозрачным */
+  background: var(--gray-400);
+  cursor: not-allowed;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Позиционирование */
+.slider-btn.prev { 
+  left: -10px;
+}
+
+.slider-btn.next { 
+  right: -10px;
+}
+
+/* Тёмная тема */
+body.dark .slider-btn {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 
+    0 4px 12px rgba(37, 99, 235, 0.6),
+    0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .slider-btn:hover {
+  background: var(--primary-light);
+  opacity: 1 !important;
+}
 
 /* Gallery Section */
 .gallery {
@@ -2202,6 +2299,33 @@ overflow-x: hidden;
   }
 }
 
+/* === АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ === */
+@media (max-width: 768px) {
+  .services-grid {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .service-card {
+    padding: 1.25rem;
+  }
+  
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .service-title {
+    font-size: 1.125rem;
+  }
+  
+  .service-description {
+    -webkit-line-clamp: 2; /* На мобильных максимум 2 строки */
+  }
+}
+
 /* Адаптивность для мобильных */
 @media (max-width: 768px) {
   .reviews-slider-track .review-card {
@@ -2228,6 +2352,7 @@ overflow-x: hidden;
     transform: translateY(-10px);
   }
 }
+
 </style>
 </head>
 <body>
@@ -2454,8 +2579,7 @@ overflow-x: hidden;
     </div>
     <h3 class="service-title">Другие работы - помощник</h3>
     <p class="service-description">
-      Помощь в бытовых делах, мелкий ремонт, сборка, 
-      демонтаж, уборка, грузчик и другие задачи.
+      Помощь в бытовых делах.
     </p>
     <div class="service-price">
       <div>
@@ -2535,7 +2659,7 @@ overflow-x: hidden;
           <div class="review-header">
             <div class="review-avatar">ИИ</div>
             <div class="review-meta">
-              <h4>Иван Иванов</h4>
+              <h4>Иван  Иванов</h4>
               <div class="review-date">12 марта 2026</div>
             </div>
           </div>
@@ -3349,7 +3473,7 @@ if (galleryTrack && galleryPrev && galleryNext) {
     const maxScrollLeft = galleryTrack.scrollWidth - galleryTrack.clientWidth;
     
     if (galleryTrack.scrollLeft <= 0) {
-      galleryPrev.style.opacity = '0.5';
+      galleryPrev.style.opacity = '4.5';
       galleryPrev.style.pointerEvents = 'none';
     } else {
       galleryPrev.style.opacity = '1';
@@ -3357,7 +3481,7 @@ if (galleryTrack && galleryPrev && galleryNext) {
     }
     
     if (galleryTrack.scrollLeft >= maxScrollLeft - 10) {
-      galleryNext.style.opacity = '0.5';
+      galleryNext.style.opacity = '4.5';
       galleryNext.style.pointerEvents = 'none';
     } else {
       galleryNext.style.opacity = '1';
