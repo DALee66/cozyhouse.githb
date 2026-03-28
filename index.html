@@ -86,7 +86,7 @@ box-sizing: border-box;
 
 html {
 scroll-behavior: smooth;
-font-size: 16px;
+font-size: 26px;
 -webkit-text-size-adjust: 100%;
 }
 
@@ -1632,6 +1632,44 @@ opacity: 1;
 transform: translateY(0);
 }
 
+/* ==========================================================================
+   ЛЕТАЮЩИЕ ИНСТРУМЕНТЫ — ФОНОВАЯ АНИМАЦИЯ
+   ========================================================================== */
+#tools-animation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Чтобы не мешал кликам */
+  z-index: 0; /* Позади всего контента */
+  overflow: hidden;
+}
+
+.flying-tool {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.15; /* Полупрозрачные */
+  color: var(--primary);
+  user-select: none;
+  will-change: transform;
+  filter: blur(0.5px);
+}
+
+/* Тёмная тема — более светлые инструменты */
+body.dark .flying-tool {
+  color: var(--primary-light);
+  opacity: 0.1;
+}
+
+/* На мобильных убираем анимацию для производительности */
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  #tools-animation-container {
+    display: none;
+  }
+}
+
+
 /* ============================================
 MOBILE RESPONSIVE DESIGN - ИСПРАВЛЕНИЯ
 ============================================ */
@@ -2136,6 +2174,11 @@ overflow-x: hidden;
 </style>
 </head>
 <body>
+<!-- ==========================================================================
+     ФОНОВАЯ АНИМАЦИЯ ЛЕТАЮЩИХ ИНСТРУМЕНТОВ
+     ========================================================================== -->
+<div id="tools-animation-container" aria-hidden="true"></div>
+
 <!-- Scroll Progress -->
 <div class="scroll-progress" id="scrollProgress"></div>
 <!-- Back to Top -->
@@ -3263,6 +3306,97 @@ if (galleryTrack && galleryPrev && galleryNext) {
       galleryNext.style.opacity = '1';
       galleryNext.style.pointerEvents = 'auto';
     }
+  });
+}
+
+// ============================================
+// АНИМАЦИЯ ЛЕТАЮЩИХ ИНСТРУМЕНТОВ НА ФОНЕ
+// ============================================
+const toolsAnimationContainer = document.getElementById('tools-animation-container');
+
+if (toolsAnimationContainer && window.innerWidth > 768) {
+  // Иконки инструментов (Font Awesome)
+  const toolIcons = [
+    'fa-wrench',
+    'fa-screwdriver',
+    'fa-hammer',
+    'fa-tools',
+    'fa-cog',
+    'fa-paint-roller',
+    'fa-brush',
+    'fa-plug',
+    'fa-lightbulb',
+    'fa-faucet'
+  ];
+
+  // Количество инструментов
+  const toolCount = 25;
+  const tools = [];
+
+  // Создание инструментов
+  for (let i = 0; i < toolCount; i++) {
+    const tool = document.createElement('i');
+    tool.className = `flying-tool fas ${toolIcons[Math.floor(Math.random() * toolIcons.length)]}`;
+    
+    // Случайная позиция
+    tool.style.left = Math.random() * 100 + 'vw';
+    tool.style.top = Math.random() * 100 + 'vh';
+    
+    // Случайный размер
+    const size = 1.5 + Math.random() * 2;
+    tool.style.fontSize = size + 'rem';
+    
+    // Случайная скорость и направление
+    const speed = 0.5 + Math.random() * 1;
+    const angle = Math.random() * Math.PI * 2;
+    
+    tools.push({
+      element: tool,
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      width: size * 16, // Примерная ширина в пикселях
+      height: size * 16
+    });
+    
+    toolsAnimationContainer.appendChild(tool);
+  }
+
+  // Анимация
+  function animateTools() {
+    const containerWidth = window.innerWidth;
+    const containerHeight = window.innerHeight;
+
+    tools.forEach(tool => {
+      // Обновление позиции
+      tool.x += tool.vx;
+      tool.y += tool.vy;
+
+      // Отталкивание от границ
+      if (tool.x <= 0 || tool.x >= containerWidth - tool.width) {
+        tool.vx = -tool.vx;
+        tool.x = Math.max(0, Math.min(tool.x, containerWidth - tool.width));
+      }
+
+      if (tool.y <= 0 || tool.y >= containerHeight - tool.height) {
+        tool.vy = -tool.vy;
+        tool.y = Math.max(0, Math.min(tool.y, containerHeight - tool.height));
+      }
+
+      // Применение позиции
+      tool.element.style.transform = `translate(${tool.x}px, ${tool.y}px)`;
+    });
+
+    requestAnimationFrame(animateTools);
+  }
+
+  // Запуск анимации
+  animateTools();
+
+  // Обновление при изменении размера окна
+  window.addEventListener('resize', () => {
+    // Пересчитываем границы при ресайзе
   });
 }
 </script>
