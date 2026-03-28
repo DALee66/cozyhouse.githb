@@ -475,18 +475,63 @@ color: var(--gray-500);
 margin-top: 0.25rem;
 }
 
-/* Master Card - Static */
+/* ==========================================================================
+   КАРТОЧКА МАСТЕРА — МЯГКИЕ ТЕНИ СО ВСЕХ СТОРОН
+   ========================================================================== */
 .master-card-static {
-background: white;
-border-radius: var(--radius-2xl);
-padding: 1.75rem;
-box-shadow: var(--shadow-2xl);
-position: relative;
-overflow: hidden;
+  background: white;
+  border-radius: var(--radius-2xl);
+  padding: 1.75rem;
+  
+  /* === МНОГОСЛОЙНЫЕ ТЕНИ ДЛЯ ОБЪЁМА СО ВСЕХ СТОРОН === */
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.08),      /* Ближняя тень — контур */
+    0 4px 12px rgba(0, 0, 0, 0.12),     /* Средняя тень — глубина */
+    0 8px 24px rgba(0, 0, 0, 0.16);     /* Дальняя тень — рассеивание */
+  
+  position: relative;
+  overflow: hidden;
+  
+  /* Плавный переход для анимации */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
+/* === Эффект при наведении — усиление теней === */
+.master-card-static:hover {
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.1),
+    0 8px 20px rgba(0, 0, 0, 0.15),
+    0 16px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+}
+
+/* === Тёмная тема — адаптированные тени === */
 body.dark .master-card-static {
-background: var(--gray-800);
+  background: var(--gray-800);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .master-card-static:hover {
+  box-shadow: 
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    0 8px 20px rgba(0, 0, 0, 0.35),
+    0 16px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* === Адаптивность для мобильных — более лёгкие тени === */
+@media (max-width: 768px) {
+  .master-card-static {
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.05),
+      0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .master-card-static:hover {
+    transform: none; /* Отключаем движение на тач-экранах */
+  }
 }
 
 .master-card-header {
@@ -2210,7 +2255,7 @@ overflow-x: hidden;
         <li><a href="#contact">Контакты</a></li>
       </ul>
       <div class="header-contacts">
-        <a href="tel:+73430000000" class="phone-link">
+        <a href="tel:+7 (999) 560-72-30" class="phone-link">
           <i class="fas fa-phone"></i>
           <span>+7 (999) 560-72-30</span>
         </a>
@@ -2850,7 +2895,7 @@ overflow-x: hidden;
       <div class="footer-column">
         <h4 class="footer-title">Контакты</h4>
         <ul class="footer-links">
-          <li><a href="tel:+73430000000"><i class="fas fa-phone"></i>+7 (999) 560-72-30</a></li>
+          <li><a href="tel:+7 (999) 560-72-30"><i class="fas fa-phone"></i>+7 (999) 560-72-30</a></li>
           <li><a href="mailto:dim_li@mail.ru"><i class="fas fa-envelope"></i> dim_li@mail.ru</a></li>
         </ul>
       </div>
