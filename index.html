@@ -485,12 +485,12 @@ margin-top: 0.25rem;
   
   /* === МНОГОСЛОЙНЫЕ ТЕНИ ДЛЯ ОБЪЁМА СО ВСЕХ СТОРОН === */
   box-shadow: 
-    0 1px 3px rgba(0, 0, 0, 0.08),      /* Ближняя тень — контур */
-    0 4px 12px rgba(0, 0, 0, 0.12),     /* Средняя тень — глубина */
-    0 8px 24px rgba(0, 0, 0, 0.16);     /* Дальняя тень — рассеивание */
+    0 1px 3px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.16) !important; /* ← Важно! */
   
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* ← Важно для поворота и теней */
   
   /* Плавный переход для анимации */
   transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -501,7 +501,7 @@ margin-top: 0.25rem;
   box-shadow: 
     0 2px 6px rgba(0, 0, 0, 0.1),
     0 8px 20px rgba(0, 0, 0, 0.15),
-    0 16px 32px rgba(0, 0, 0, 0.2);
+    0 16px 32px rgba(0, 0, 0, 0.2) !important; /* ← Важно! */
   transform: translateY(-4px);
 }
 
@@ -521,16 +521,20 @@ body.dark .master-card-static:hover {
     0 16px 32px rgba(0, 0, 0, 0.45);
 }
 
-/* === Адаптивность для мобильных — более лёгкие тени === */
+/* ✅ ИСПРАВЛЕНИЕ: Видимые тени на мобильных для master-card-static */
 @media (max-width: 768px) {
   .master-card-static {
     box-shadow: 
-      0 1px 2px rgba(0, 0, 0, 0.05),
-      0 2px 8px rgba(0, 0, 0, 0.08);
+      0 2px 8px rgba(0, 0, 0, 0.08),
+      0 4px 16px rgba(0, 0, 0, 0.12),
+      0 8px 24px rgba(0, 0, 0, 0.16) !important; /* !important для приоритета */
   }
   
   .master-card-static:hover {
-    transform: none; /* Отключаем движение на тач-экранах */
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.12),
+      0 8px 24px rgba(0, 0, 0, 0.18),
+      0 16px 32px rgba(0, 0, 0, 0.24) !important;
   }
 }
 
@@ -1707,10 +1711,18 @@ body.dark .flying-tool {
   opacity: 0.1;
 }
 
-/* На мобильных убираем анимацию для производительности */
-@media (max-width: 768px), (prefers-reduced-motion: reduce) {
-  #tools-animation-container {
-    display: none;
+/* ✅ ИСПРАВЛЕНИЕ: Сохраняем тени, убираем только анимацию движения */
+@media (prefers-reduced-motion: reduce) {
+  .master-card-static {
+    /* Тени остаются, убираем только transform-анимацию */
+    transform: none !important;
+    transition: none !important;
+    /* box-shadow остаётся без изменений */
+      /* ❌ Не должно быть так */
+  /* overflow: hidden; */
+  
+  /* ✅ Должно быть так */
+  overflow: visible;
   }
 }
 
